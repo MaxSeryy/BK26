@@ -1,0 +1,75 @@
+{
+  "hardware_environment": {
+    "cpu": "AMD Ryzen 5 7640HS w/ Radeon 760M Graphics (6 cores, 12 threads)",
+    "dgpu": "NVIDIA GeForce RTX 4050 Laptop GPU (Доступний через OpenVINO GPU.0)",
+    "igpu": "AMD Radeon 760M Graphics (Не підтримується OpenVINO Intel-GPU драйвером)",
+    "npu": "Відсутній в апаратній конфігурації системи"
+  },
+  "configurations": [
+    {
+      "engine": "PyTorch (CPU)",
+      "precision": "FP32",
+      "device": "CPU",
+      "file_size_mb": 4.095,
+      "latency_b1_mean_ms": 1.158,
+      "latency_b1_median_ms": 1.109,
+      "latency_b1_p95_ms": 1.533,
+      "latency_b1_std_ms": 0.166,
+      "fps_b1": 863.6,
+      "fps_b8": 1373.3,
+      "rss_ram_mb": 275.9
+    },
+    {
+      "engine": "ONNX Runtime (FP32)",
+      "precision": "FP32",
+      "device": "CPU",
+      "file_size_mb": 1.36,
+      "latency_b1_mean_ms": 0.344,
+      "latency_b1_median_ms": 0.362,
+      "latency_b1_p95_ms": 0.396,
+      "latency_b1_std_ms": 0.051,
+      "fps_b1": 2907.7,
+      "fps_b8": 3939.9,
+      "rss_ram_mb": 299.9
+    },
+    {
+      "engine": "ONNX Runtime (INT8)",
+      "precision": "INT8",
+      "device": "CPU",
+      "file_size_mb": 0.352,
+      "latency_b1_mean_ms": 0.188,
+      "latency_b1_median_ms": 0.182,
+      "latency_b1_p95_ms": 0.244,
+      "latency_b1_std_ms": 0.035,
+      "fps_b1": 5322.4,
+      "fps_b8": 5895.1,
+      "rss_ram_mb": 290.4
+    },
+    {
+      "engine": "OpenVINO (FP32 CPU)",
+      "precision": "FP32",
+      "device": "CPU",
+      "file_size_mb": 1.36,
+      "latency_b1_mean_ms": 0.212,
+      "latency_b1_median_ms": 0.187,
+      "latency_b1_p95_ms": 0.305,
+      "latency_b1_std_ms": 0.071,
+      "fps_b1": 4706.1,
+      "fps_b8": 9878.2,
+      "rss_ram_mb": 313.9
+    },
+    {
+      "engine": "OpenVINO (INT8 CPU)",
+      "precision": "INT8",
+      "device": "CPU",
+      "file_size_mb": 0.352,
+      "latency_b1_mean_ms": 0.261,
+      "latency_b1_median_ms": 0.232,
+      "latency_b1_p95_ms": 0.413,
+      "latency_b1_std_ms": 0.13,
+      "fps_b1": 3831.1,
+      "fps_b8": 13062.1,
+      "rss_ram_mb": 315.2
+    }
+  ]
+}

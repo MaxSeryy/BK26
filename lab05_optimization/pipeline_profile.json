@@ -1,0 +1,92 @@
+{
+  "FP32": {
+    "model_path": "models/simple_cnn.onnx",
+    "stages": {
+      "acquisition": {
+        "mean_ms": 2.279,
+        "std_ms": 0.945,
+        "p95_ms": 3.792,
+        "percentage": 64.4
+      },
+      "preprocess": {
+        "mean_ms": 0.254,
+        "std_ms": 0.133,
+        "p95_ms": 0.552,
+        "percentage": 7.2
+      },
+      "inference": {
+        "mean_ms": 0.4,
+        "std_ms": 0.099,
+        "p95_ms": 0.529,
+        "percentage": 11.3
+      },
+      "postprocess": {
+        "mean_ms": 0.047,
+        "std_ms": 0.014,
+        "p95_ms": 0.074,
+        "percentage": 1.3
+      },
+      "render": {
+        "mean_ms": 0.506,
+        "std_ms": 0.499,
+        "p95_ms": 0.828,
+        "percentage": 14.3
+      },
+      "total": {
+        "mean_ms": 3.541,
+        "std_ms": 1.526,
+        "p95_ms": 5.798,
+        "percentage": 100.0
+      }
+    },
+    "bottleneck_stage": "acquisition",
+    "bottleneck_time_ms": 2.279,
+    "bottleneck_percentage": 64.4,
+    "pipeline_fps": 282.4
+  },
+  "INT8": {
+    "model_path": "models/simple_cnn_int8.onnx",
+    "stages": {
+      "acquisition": {
+        "mean_ms": 2.243,
+        "std_ms": 0.911,
+        "p95_ms": 3.729,
+        "percentage": 67.4
+      },
+      "preprocess": {
+        "mean_ms": 0.247,
+        "std_ms": 0.148,
+        "p95_ms": 0.476,
+        "percentage": 7.4
+      },
+      "inference": {
+        "mean_ms": 0.301,
+        "std_ms": 0.054,
+        "p95_ms": 0.375,
+        "percentage": 9.1
+      },
+      "postprocess": {
+        "mean_ms": 0.045,
+        "std_ms": 0.011,
+        "p95_ms": 0.064,
+        "percentage": 1.4
+      },
+      "render": {
+        "mean_ms": 0.438,
+        "std_ms": 0.204,
+        "p95_ms": 0.795,
+        "percentage": 13.2
+      },
+      "total": {
+        "mean_ms": 3.325,
+        "std_ms": 1.304,
+        "p95_ms": 5.385,
+        "percentage": 100.0
+      }
+    },
+    "bottleneck_stage": "acquisition",
+    "bottleneck_time_ms": 2.243,
+    "bottleneck_percentage": 67.4,
+    "pipeline_fps": 300.8
+  }
+}

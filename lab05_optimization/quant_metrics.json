@@ -1,0 +1,72 @@
+{
+  "quantization_type": "Static Post-Training Quantization (PTQ)",
+  "quant_format": "QDQ (Quantize-Dequantize)",
+  "weight_type": "QInt8",
+  "activation_type": "QUInt8",
+  "calibration_samples": 60,
+  "size_comparison": {
+    "size_fp32_bytes": 1426367,
+    "size_int8_bytes": 368877,
+    "size_fp32_mb": 1.3603,
+    "size_int8_mb": 0.3518,
+    "compression_ratio": 3.87,
+    "quant_time_sec": 0.27
+  },
+  "fp32_evaluation": {
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "mean_latency_ms": 0.378,
+    "confusion_matrix": [
+      [
+        15,
+        0,
+        0
+      ],
+      [
+        0,
+        15,
+        0
+      ],
+      [
+        0,
+        0,
+        15
+      ]
+    ],
+    "classes": [
+      "car",
+      "drone",
+      "pedestrian"
+    ],
+    "sample_count": 45
+  },
+  "int8_evaluation": {
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "mean_latency_ms": 0.301,
+    "confusion_matrix": [
+      [
+        15,
+        0,
+        0
+      ],
+      [
+        0,
+        15,
+        0
+      ],
+      [
+        0,
+        0,
+        15
+      ]
+    ],
+    "classes": [
+      "car",
+      "drone",
+      "pedestrian"
+    ],
+    "sample_count": 45
+  },
+  "accuracy_delta_percent": 0.0
+}
