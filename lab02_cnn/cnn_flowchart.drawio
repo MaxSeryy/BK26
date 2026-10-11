@@ -1,0 +1,154 @@
+<mxfile host="Electron">
+  <diagram name="CNN-Training-Pipeline" id="cnn_pipeline_diagram">
+    <mxGraphModel dx="1200" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Header / Container -->
+        <mxCell id="grp_data" value="1. Підготовка даних (Data Pipeline)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="380" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="node_start" value="Вхідні зображення датасету&#xa;(dataset_split.json)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="grp_data">
+          <mxGeometry x="60" y="40" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node_aug" value="Аугментація (train):&#xa;RandomHorizontalFlip, Rotation(15°), ColorJitter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="grp_data">
+          <mxGeometry x="40" y="120" width="300" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="node_tensor" value="ToTensor &amp; Normalize&#xa;Розмір батчу: (N, 3, 64, 64)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="grp_data">
+          <mxGeometry x="60" y="190" width="260" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_d1" edge="1" parent="grp_data" source="node_start" target="node_aug" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_d2" edge="1" parent="grp_data" source="node_aug" target="node_tensor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Model Architecture Container -->
+        <mxCell id="grp_arch" value="2. Архітектура SimpleCNN" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="490" y="40" width="410" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="node_b1" value="Згортковий блок 1:&#xa;Conv2d (3 -&gt; 32, k=3, p=1)&#xa;BatchNorm2d(32) + ReLU&#xa;MaxPool2d (2x2, stride=2) -&gt; (32, 32, 32)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="grp_arch">
+          <mxGeometry x="40" y="40" width="330" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="node_b2" value="Згортковий блок 2:&#xa;Conv2d (32 -&gt; 64, k=3, p=1)&#xa;BatchNorm2d(64) + ReLU&#xa;MaxPool2d (2x2, stride=2) -&gt; (64, 16, 16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="grp_arch">
+          <mxGeometry x="40" y="130" width="330" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="node_b3" value="Згортковий блок 3:&#xa;Conv2d (64 -&gt; 128, k=3, p=1)&#xa;BatchNorm2d(128) + ReLU&#xa;MaxPool2d (2x2, stride=2) -&gt; (128, 8, 8)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="grp_arch">
+          <mxGeometry x="40" y="220" width="330" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="node_pool" value="Адаптивний пулінг:&#xa;AdaptiveAvgPool2d((4, 4)) -&gt; Flatten (2048)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="grp_arch">
+          <mxGeometry x="40" y="310" width="330" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node_head" value="Класифікаційна голова:&#xa;Dropout(0.4) + Linear(2048 -&gt; 128) + ReLU&#xa;Dropout(0.3) + Linear(128 -&gt; 3 logits)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="grp_arch">
+          <mxGeometry x="40" y="385" width="330" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_a1" edge="1" parent="grp_arch" source="node_b1" target="node_b2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_a2" edge="1" parent="grp_arch" source="node_b2" target="node_b3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_a3" edge="1" parent="grp_arch" source="node_b3" target="node_pool" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_a4" edge="1" parent="grp_arch" source="node_pool" target="node_head" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Training Loop Container -->
+        <mxCell id="grp_train" value="3. Цикл навчання та оптимізації (Train Loop)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="380" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="node_loss" value="Обчислення втрат:&#xa;CrossEntropyLoss(logits, targets)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="grp_train">
+          <mxGeometry x="50" y="40" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node_back" value="Зворотне поширення помилки:&#xa;loss.backward() (Autograd)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="grp_train">
+          <mxGeometry x="50" y="120" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node_opt" value="Оновлення ваг моделі:&#xa;optimizer.step() + optimizer.zero_grad()&#xa;(Adam, lr=0.001, weight_decay=1e-4)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="grp_train">
+          <mxGeometry x="50" y="200" width="280" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="node_next_batch" value="Перехід до наступного батчу" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c757d;" vertex="1" parent="grp_train">
+          <mxGeometry x="70" y="285" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_t1" edge="1" parent="grp_train" source="node_loss" target="node_back" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_t2" edge="1" parent="grp_train" source="node_back" target="node_opt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_t3" edge="1" parent="grp_train" source="node_opt" target="node_next_batch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Validation & Checkpoint Container -->
+        <mxCell id="grp_eval" value="4. Валідація та збереження моделі" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="490" y="550" width="410" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="node_val" value="Валідація (model.eval(), with torch.no_grad()):&#xa;Обчислення Val Loss та Val Accuracy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="grp_eval">
+          <mxGeometry x="40" y="40" width="330" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node_cond" value="Val Accuracy &gt; Best Val Accuracy?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="grp_eval">
+          <mxGeometry x="65" y="115" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node_save" value="Збереження чекпоінту:&#xa;models/best_cnn_model.pt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="grp_eval">
+          <mxGeometry x="40" y="210" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node_skip" value="Пропуск збереження" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#ced4da;" vertex="1" parent="grp_eval">
+          <mxGeometry x="250" y="210" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_v1" edge="1" parent="grp_eval" source="node_val" target="node_cond" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_v2" edge="1" parent="grp_eval" source="node_cond" target="node_save" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_yes" connectable="0" parent="edge_v2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Так" vertex="1">
+          <mxGeometry relative="1" x="-0.2" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_v3" edge="1" parent="grp_eval" source="node_cond" target="node_skip" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_no" connectable="0" parent="edge_v3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Ні" vertex="1">
+          <mxGeometry relative="1" x="-0.2" as="geometry" />
+        </mxCell>
+
+        <!-- Connecting Inter-group Edges -->
+        <mxCell id="edge_d_to_a" edge="1" parent="1" source="node_tensor" target="node_b1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_da" connectable="0" parent="edge_d_to_a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Forward Pass (батч)" vertex="1">
+          <mxGeometry relative="1" x="0.1" y="-5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_a_to_t" edge="1" parent="1" source="node_head" target="node_loss" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_at" connectable="0" parent="edge_a_to_t" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Logits &amp; Targets" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_t_to_v" edge="1" parent="1" source="node_next_batch" target="node_val" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_tv" connectable="0" parent="edge_t_to_v" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Після кожної епохи" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Final Test Evaluation Node -->
+        <mxCell id="node_test_eval" value="5. Тестування найкращої моделі на Test вибірці:&#xa;Confusion Matrix, Accuracy, Precision, Recall, візуалізація 5 правильних і 5 помилкових прогнозів" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="880" width="840" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_save_to_test" edge="1" parent="1" source="node_save" target="node_test_eval" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_eval" connectable="0" parent="edge_save_to_test" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Фінальне тестування" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
