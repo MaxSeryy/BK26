@@ -1,0 +1,1220 @@
+{
+  "random_seed": 13,
+  "total_valid": 300,
+  "train_count": 210,
+  "val_count": 45,
+  "test_count": 45,
+  "classes": [
+    "car",
+    "drone",
+    "pedestrian"
+  ],
+  "splits": {
+    "train": [
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_047.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_095.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_048.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_038.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_008.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_019.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_054.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_020.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_050.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_004.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_098.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_032.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_094.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_017.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_065.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_044.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_058.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_052.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_003.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_008.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_100.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_060.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_036.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_014.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_021.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_043.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_038.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_001.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_012.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_038.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_039.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_093.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_031.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_027.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_068.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_041.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_006.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_028.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_059.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_011.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_089.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_082.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_009.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_085.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_078.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_053.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_010.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_069.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_079.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_097.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_015.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_005.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_034.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_028.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_037.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_072.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_053.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_042.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_070.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_077.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_002.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_061.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_088.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_088.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_097.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_076.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_014.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_035.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_099.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_084.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_007.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_089.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_036.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_077.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_033.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_021.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_019.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_024.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_011.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_063.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_056.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_008.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_044.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_010.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_004.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_009.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_090.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_043.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_089.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_021.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_096.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_079.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_097.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_076.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_082.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_086.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_094.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_057.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_090.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_045.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_055.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_040.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_071.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_035.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_059.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_082.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_052.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_058.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_031.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_017.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_042.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_081.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_064.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_080.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_052.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_013.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_079.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_014.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_096.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_051.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_039.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_060.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_073.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_081.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_096.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_069.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_050.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_044.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_024.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_037.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_045.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_084.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_061.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_024.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_058.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_016.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_046.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_100.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_092.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_022.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_072.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_027.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_054.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_073.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_023.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_031.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_085.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_057.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_043.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_064.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_045.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_071.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_030.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_093.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_065.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_062.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_007.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_020.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_066.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_087.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_018.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_091.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_060.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_007.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_004.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_063.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_012.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_062.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_013.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_092.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_022.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_062.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_093.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_039.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_026.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_009.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_042.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_075.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_095.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_070.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_088.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_034.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_013.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_001.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_018.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_069.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_090.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_068.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_023.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_033.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_049.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_032.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_035.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_030.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_066.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_099.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_016.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_056.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_073.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_087.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_006.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_047.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_036.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_006.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_086.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_091.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_070.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_099.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_098.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_072.jpg",
+        "class": "car"
+      }
+    ],
+    "val": [
+      {
+        "path": "data/dataset\\car\\car_095.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_025.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_017.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_051.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_051.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_077.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_080.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_029.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_055.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_011.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_040.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_005.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_087.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_027.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_049.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_025.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_003.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_029.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_083.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_046.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_019.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_100.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_067.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_048.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_067.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_040.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_026.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_055.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_061.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_030.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_005.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_084.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_092.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_078.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_083.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_068.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_078.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_018.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_074.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_003.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_033.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_041.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_080.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_034.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_048.jpg",
+        "class": "pedestrian"
+      }
+    ],
+    "test": [
+      {
+        "path": "data/dataset\\drone\\drone_002.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_057.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_002.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_059.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_023.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_010.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_065.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_037.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_083.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_086.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_075.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_047.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_081.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_020.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_012.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_001.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_094.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_053.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_056.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_067.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_063.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_049.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_076.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_028.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_032.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_071.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_074.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_074.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_041.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\car\\car_098.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_029.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_085.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_066.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\car\\car_022.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_050.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_026.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_016.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_091.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_064.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_075.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_046.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\drone\\drone_015.jpg",
+        "class": "drone"
+      },
+      {
+        "path": "data/dataset\\car\\car_025.jpg",
+        "class": "car"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_015.jpg",
+        "class": "pedestrian"
+      },
+      {
+        "path": "data/dataset\\pedestrian\\pedestrian_054.jpg",
+        "class": "pedestrian"
+      }
+    ]
+  }
+}

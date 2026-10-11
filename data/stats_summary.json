@@ -1,0 +1,50 @@
+{
+  "classes": [
+    "car",
+    "drone",
+    "pedestrian"
+  ],
+  "total_found": 302,
+  "valid_count": 300,
+  "corrupted_count": 2,
+  "corrupted_details": [
+    {
+      "path": "data/dataset\\car\\car_corrupted_empty.jpg",
+      "class": "car",
+      "reason": "Файл має нульовий розмір (0 байт)"
+    },
+    {
+      "path": "data/dataset\\drone\\drone_corrupted_header.jpg",
+      "class": "drone",
+      "reason": "Пошкоджений заголовок або некоректний формат декодування"
+    }
+  ],
+  "split_stats": {
+    "Train": {
+      "car": 70,
+      "drone": 70,
+      "pedestrian": 70
+    },
+    "Validation": {
+      "car": 15,
+      "drone": 15,
+      "pedestrian": 15
+    },
+    "Test": {
+      "car": 15,
+      "drone": 15,
+      "pedestrian": 15
+    }
+  },
+  "dimensions": {
+    "min_w": 320,
+    "max_w": 800,
+    "mean_w": 592.3333333333334,
+    "min_h": 240,
+    "max_h": 600,
+    "mean_h": 456.25333333333333,
+    "min_kb": 43.49,
+    "max_kb": 287.83,
+    "mean_kb": 166.84256666666667
+  }
+}
