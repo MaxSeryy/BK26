@@ -1,0 +1,30 @@
+{
+  "Base SimpleCNN (64x64)": {
+    "target_resolution": "64x64",
+    "params_count": 356131,
+    "model_size_mb": 4.1,
+    "inf_mean_ms": 1.25,
+    "inf_std_ms": 0.21,
+    "inf_median_ms": 1.19,
+    "inf_min_ms": 0.85,
+    "inf_max_ms": 1.95,
+    "prep_mean_ms": 0.36,
+    "post_mean_ms": 0.03,
+    "total_mean_ms": 1.64,
+    "fps": 610.7
+  },
+  "MobileNetV3-Small (224x224)": {
+    "target_resolution": "224x224",
+    "params_count": 1520931,
+    "model_size_mb": 5.93,
+    "inf_mean_ms": 7.77,
+    "inf_std_ms": 0.81,
+    "inf_median_ms": 7.62,
+    "inf_min_ms": 6.58,
+    "inf_max_ms": 12.06,
+    "prep_mean_ms": 1.96,
+    "post_mean_ms": 0.04,
+    "total_mean_ms": 9.77,
+    "fps": 102.3
+  }
+}

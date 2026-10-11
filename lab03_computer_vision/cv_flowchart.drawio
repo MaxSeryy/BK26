@@ -1,0 +1,110 @@
+<mxfile host="Electron">
+  <diagram name="CV-Pipeline-Diagram" id="cv_pipeline_diagram">
+    <mxGraphModel dx="1200" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Container 1: Input -->
+        <mxCell id="grp_input" value="1. Джерело відеопотоку / Кадрів" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="360" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="node_source" value="Джерело зображень:&#xa;Камера / Відеофайл / Датасет&#xa;(cv2.VideoCapture, cv2.imread)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="grp_input">
+          <mxGeometry x="40" y="40" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node_read_frame" value="Зчитування сирого кадру:&#xa;frame_bgr (H × W × 3, uint8)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ced4da;" vertex="1" parent="grp_input">
+          <mxGeometry x="40" y="135" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_in_1" edge="1" parent="grp_input" source="node_source" target="node_read_frame" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Container 2: Preprocessing -->
+        <mxCell id="grp_prep" value="2. Попередня обробка (Preprocessing)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="470" y="40" width="410" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="node_color_res" value="Конвертація та ресайз:&#xa;BGR -&gt; RGB (cv2.COLOR_BGR2RGB)&#xa;Resize до (224 × 224)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="grp_prep">
+          <mxGeometry x="40" y="40" width="330" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="node_norm_tensor" value="Нормалізація та створення тензора:&#xa;(x / 255.0 - mean) / std (ImageNet)&#xa;Транспонування у (1, 3, 224, 224), float32" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="grp_prep">
+          <mxGeometry x="40" y="130" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_pr_1" edge="1" parent="grp_prep" source="node_color_res" target="node_norm_tensor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Container 3: Inference -->
+        <mxCell id="grp_inf" value="3. Прямий прохід моделі (Inference)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="470" y="310" width="410" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="node_bb" value="Pretrained Backbone (MobileNetV3-Small):&#xa;Inverted Residual блоки з глибинною згорткою&#xa;та Hardswish / Squeeze-and-Excitation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="grp_inf">
+          <mxGeometry x="40" y="40" width="330" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="node_head" value="Адаптована класифікаційна голова:&#xa;Linear(1024 -&gt; 3 класи) під torch.no_grad()&#xa;Отримання вихідних сирих логітів" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="grp_inf">
+          <mxGeometry x="40" y="140" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inf_1" edge="1" parent="grp_inf" source="node_bb" target="node_head" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Container 4: Postprocessing & Telemetry -->
+        <mxCell id="grp_post" value="4. Постобробка та профільована телеметрія" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="360" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="node_softmax" value="Softmax та визначення Top-1 класу:&#xa;probabilities = softmax(logits)&#xa;pred_class = argmax, confidence = max(prob)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="grp_post">
+          <mxGeometry x="35" y="40" width="290" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="node_perf" value="Профілювання затримок (Latency / FPS):&#xa;Замір t_prep, t_inf, t_post&#xa;Розрахунок повного часу та FPS = 1000 / t_total" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="grp_post">
+          <mxGeometry x="35" y="140" width="290" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_po_1" edge="1" parent="grp_post" source="node_softmax" target="node_perf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Container 5: Output & HUD -->
+        <mxCell id="grp_out" value="5. Нанесення HUD оверлею та вивід (Visualization)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="60" y="620" width="820" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="node_hud" value="Накладання інтерфейсу технічного зору:&#xa;• Прицільна рамка області об'єкта (Bounding Reticle)&#xa;• Верхня плашка: Клас (CAR / DRONE / PEDESTRIAN) та Confidence %&#xa;• Нижня плашка телеметрії: Inference (мс), Preprocess (мс), Total (мс), FPS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="grp_out">
+          <mxGeometry x="40" y="40" width="500" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="node_display" value="Вивід результату:&#xa;cv2.imshow / Відеофайл /&#xa;Збереження кадру" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="grp_out">
+          <mxGeometry x="580" y="45" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_out_1" edge="1" parent="grp_out" source="node_hud" target="node_display" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Inter-group Connections -->
+        <mxCell id="edge_c1" edge="1" parent="1" source="node_read_frame" target="node_color_res" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_c1" connectable="0" parent="edge_c1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Сирий кадр" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_c2" edge="1" parent="1" source="node_norm_tensor" target="node_bb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_c2" connectable="0" parent="edge_c2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Вхідний тензор" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_c3" edge="1" parent="1" source="node_head" target="node_softmax" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_c3" connectable="0" parent="edge_c3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Логіти" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_c4" edge="1" parent="1" source="node_perf" target="node_hud" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.25;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lbl_c4" connectable="0" parent="edge_c4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Дані передбачення та таймінги" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
