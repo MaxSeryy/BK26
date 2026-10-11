@@ -1,0 +1,40 @@
+{
+  "onnx_path": "models/simple_cnn.onnx",
+  "opset_version": 14,
+  "input_name": "input",
+  "output_name": "output",
+  "input_shape": [
+    "batch_size",
+    3,
+    64,
+    64
+  ],
+  "output_shape": [
+    "batch_size",
+    3
+  ],
+  "file_size_bytes": 1426367,
+  "test_results": [
+    {
+      "batch_size": 1,
+      "max_abs_diff": 2.384185791015625e-07,
+      "mean_abs_diff": 1.7881393432617188e-07,
+      "matches": 1,
+      "total": 1
+    },
+    {
+      "batch_size": 4,
+      "max_abs_diff": 3.8743019104003906e-07,
+      "mean_abs_diff": 1.648440957069397e-07,
+      "matches": 4,
+      "total": 4
+    },
+    {
+      "batch_size": 16,
+      "max_abs_diff": 4.172325134277344e-07,
+      "mean_abs_diff": 1.548323780298233e-07,
+      "matches": 16,
+      "total": 16
+    }
+  ]
+}

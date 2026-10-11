@@ -1,0 +1,39 @@
+{
+  "PyTorch (CPU)": {
+    "b1_mean_ms": 1.21,
+    "b1_std_ms": 0.17,
+    "b1_median_ms": 1.17,
+    "b1_min_ms": 0.84,
+    "b1_max_ms": 1.96,
+    "b1_p95_ms": 1.56,
+    "b1_fps": 827.5,
+    "b8_latency_ms": 6.24,
+    "b8_throughput_fps": 1282.0
+  },
+  "ONNX Runtime (CPU)": {
+    "b1_mean_ms": 0.29,
+    "b1_std_ms": 0.1,
+    "b1_median_ms": 0.26,
+    "b1_min_ms": 0.24,
+    "b1_max_ms": 0.98,
+    "b1_p95_ms": 0.48,
+    "b1_fps": 3393.7,
+    "b8_latency_ms": 1.77,
+    "b8_throughput_fps": 4508.8
+  },
+  "Intel OpenVINO (CPU)": {
+    "b1_mean_ms": 0.27,
+    "b1_std_ms": 0.15,
+    "b1_median_ms": 0.25,
+    "b1_min_ms": 0.17,
+    "b1_max_ms": 1.2,
+    "b1_p95_ms": 0.5,
+    "b1_fps": 3758.0,
+    "b8_latency_ms": 0.94,
+    "b8_throughput_fps": 8499.8
+  },
+  "model_sizes_mb": {
+    "PyTorch (.pt)": 4.1,
+    "ONNX (.onnx)": 1.36
+  }
+}
