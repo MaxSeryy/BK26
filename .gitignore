@@ -1,0 +1,47 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Datasets and raw heavy media
+data/dataset/
+**/dataset/
+*.jpg
+*.jpeg
+*.png.tmp
+
+# Machine learning models and weights
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.bin
+models/*.h5
+models/*.weights
+models/*.engine
+*.pt
+*.pth
+*.onnx
+
+# Reports and document files
+reports/
+*.docx
+~$*.docx
+
+# IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.log
