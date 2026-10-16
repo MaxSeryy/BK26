@@ -1,114 +1,111 @@
 <mxfile host="Electron">
   <diagram name="Optimization-Profiling-Pipeline" id="optimization_pipeline_diagram">
-    <mxGraphModel dx="1200" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="1131" dy="711" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <!-- Container 1: Base FP32 Model & Data Source -->
-        <mxCell id="grp_base" value="1. Базові ресурси та вхідні дані" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="50" y="40" width="350" height="230" as="geometry" />
+        <mxCell id="grp_base" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="1. Базові ресурси та вхідні дані" vertex="1">
+          <mxGeometry height="230" width="350" x="50" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_fp32" value="Базова модель FP32:&#xa;models/simple_cnn.onnx&#xa;Розмір: 1.36 MB, Точність: 100%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="grp_base">
-          <mxGeometry x="35" y="40" width="280" height="60" as="geometry" />
+        <mxCell id="node_fp32" parent="grp_base" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="Базова модель FP32:&#xa;models/simple_cnn.onnx&#xa;Розмір: 1.36 MB, Точність: 100%" vertex="1">
+          <mxGeometry height="60" width="280" x="35" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_calib" value="Калібрувальна вибірка:&#xa;data/dataset_split.json (60 train зразків)&#xa;Репрезентативні класи: car, drone, pedestrian" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="grp_base">
-          <mxGeometry x="35" y="135" width="280" height="65" as="geometry" />
+        <mxCell id="node_calib" parent="grp_base" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Калібрувальна вибірка:&#xa;data/dataset_split.json (60 train зразків)&#xa;Репрезентативні класи: car, drone, pedestrian" vertex="1">
+          <mxGeometry height="65" width="280" x="35" y="135" as="geometry" />
         </mxCell>
-
-        <!-- Container 2: Static PTQ Quantization -->
-        <mxCell id="grp_ptq" value="2. Статичне квантування (Static PTQ INT8)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="440" y="40" width="410" height="230" as="geometry" />
+        <mxCell id="grp_ptq" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="2. Статичне квантування (Static PTQ INT8)" vertex="1">
+          <mxGeometry height="230" width="410" x="440" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_qproc" value="ONNX Runtime Quantization:&#xa;ImageCalibrationDataReader (MinMax калібрування)&#xa;Розрахунок масштабів Scale та Zero-Point" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="grp_ptq">
-          <mxGeometry x="35" y="40" width="340" height="60" as="geometry" />
+        <mxCell id="node_qproc" parent="grp_ptq" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="ONNX Runtime Quantization:&#xa;ImageCalibrationDataReader (MinMax калібрування)&#xa;Розрахунок масштабів Scale та Zero-Point" vertex="1">
+          <mxGeometry height="60" width="340" x="35" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_int8_model" value="Оптимізована модель INT8:&#xa;models/simple_cnn_int8.onnx (0.35 MB)&#xa;Стиснення: 3.87x (-74.1%), Дельта точності: 0.0%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="grp_ptq">
-          <mxGeometry x="35" y="135" width="340" height="65" as="geometry" />
+        <mxCell id="node_int8_model" parent="grp_ptq" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" value="Оптимізована модель INT8:&#xa;models/simple_cnn_int8.onnx (0.35 MB)&#xa;Стиснення: 3.87x (-74.1%), Дельта точності: 0.0%" vertex="1">
+          <mxGeometry height="65" width="340" x="35" y="135" as="geometry" />
         </mxCell>
-        <mxCell id="edge_ptq_1" edge="1" parent="grp_ptq" source="node_qproc" target="node_int8_model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_ptq_1" edge="1" parent="grp_ptq" source="node_qproc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_int8_model">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Inter-group edges 1 -> 2 -->
-        <mxCell id="edge_b_to_q1" edge="1" parent="1" source="node_fp32" target="node_qproc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_b_to_q1" edge="1" parent="1" source="node_fp32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_qproc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="90" />
+              <mxPoint x="420" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_b_to_q2" edge="1" parent="1" source="node_calib" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_qproc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="208" />
+              <mxPoint x="420" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="grp_pipe" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="3. Інтегрований AI-конвеєр комп&#39;ютерного зору (Integrated Pipeline)" vertex="1">
+          <mxGeometry height="190" width="800" x="50" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe_s1" parent="grp_pipe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontStyle=1;" value="Етап 1: Frame Acquisition&#xa;cv2.imread (диск / потік)&#xa;Час: 2.24 мс (67.4%)" vertex="1">
+          <mxGeometry height="110" width="135" x="20" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe_s2" parent="grp_pipe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;fontStyle=1;" value="Етап 2: Preprocessing&#xa;Resize (64x64), RGB&#xa;Нормалізація ImageNet&#xa;Час: 0.25 мс (7.4%)" vertex="1">
+          <mxGeometry height="110" width="135" x="175" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe_s3" parent="grp_pipe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#10b981;fontStyle=1;" value="Етап 3: INT8 Inference&#xa;ORT / OpenVINO CPU&#xa;Квантований граф QDQ&#xa;Час: 0.30 мс (9.1%)" vertex="1">
+          <mxGeometry height="110" width="140" x="330" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe_s4" parent="grp_pipe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#f59e0b;fontStyle=1;" value="Етап 4: Postprocessing&#xa;Softmax ймовірності&#xa;Top-1 Class &amp; Score&#xa;Час: 0.05 мс (1.4%)" vertex="1">
+          <mxGeometry height="110" width="135" x="490" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe_s5" parent="grp_pipe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#8b5cf6;fontStyle=1;" value="Етап 5: HUD Rendering&#xa;Оверлей телеметрії&#xa;Анотований кадр cv2&#xa;Час: 0.44 мс (13.2%)" vertex="1">
+          <mxGeometry height="110" width="135" x="645" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_p1_p2" edge="1" parent="grp_pipe" source="pipe_s1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="pipe_s2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_b_to_q2" edge="1" parent="1" source="node_calib" target="node_qproc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_p2_p3" edge="1" parent="grp_pipe" source="pipe_s2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="pipe_s3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Container 3: Integrated Vision Pipeline -->
-        <mxCell id="grp_pipe" value="3. Інтегрований AI-конвеєр комп'ютерного зору (Integrated Pipeline)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="50" y="310" width="800" height="190" as="geometry" />
-        </mxCell>
-        <mxCell id="pipe_s1" value="Етап 1: Frame Acquisition&#xa;cv2.imread (диск / потік)&#xa;Час: 2.24 мс (67.4%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontStyle=1;" vertex="1" parent="grp_pipe">
-          <mxGeometry x="20" y="45" width="135" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="pipe_s2" value="Етап 2: Preprocessing&#xa;Resize (64x64), RGB&#xa;Нормалізація ImageNet&#xa;Час: 0.25 мс (7.4%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;fontStyle=1;" vertex="1" parent="grp_pipe">
-          <mxGeometry x="175" y="45" width="135" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="pipe_s3" value="Етап 3: INT8 Inference&#xa;ORT / OpenVINO CPU&#xa;Квантований граф QDQ&#xa;Час: 0.30 мс (9.1%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#10b981;fontStyle=1;" vertex="1" parent="grp_pipe">
-          <mxGeometry x="330" y="45" width="140" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="pipe_s4" value="Етап 4: Postprocessing&#xa;Softmax ймовірності&#xa;Top-1 Class &amp; Score&#xa;Час: 0.05 мс (1.4%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#f59e0b;fontStyle=1;" vertex="1" parent="grp_pipe">
-          <mxGeometry x="490" y="45" width="135" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="pipe_s5" value="Етап 5: HUD Rendering&#xa;Оверлей телеметрії&#xa;Анотований кадр cv2&#xa;Час: 0.44 мс (13.2%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#8b5cf6;fontStyle=1;" vertex="1" parent="grp_pipe">
-          <mxGeometry x="645" y="45" width="135" height="110" as="geometry" />
-        </mxCell>
-
-        <mxCell id="edge_p1_p2" edge="1" parent="grp_pipe" source="pipe_s1" target="pipe_s2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_p3_p4" edge="1" parent="grp_pipe" source="pipe_s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="pipe_s4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_p2_p3" edge="1" parent="grp_pipe" source="pipe_s2" target="pipe_s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_p4_p5" edge="1" parent="grp_pipe" source="pipe_s4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="pipe_s5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_p3_p4" edge="1" parent="grp_pipe" source="pipe_s3" target="pipe_s4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_m_to_inf" edge="1" parent="1" source="node_int8_model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="pipe_s3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="340" />
+              <mxPoint x="450" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="grp_prof" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="4. Профілювання затримок та аналіз вузького місця" vertex="1">
+          <mxGeometry height="240" width="370" x="50" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="node_prof_time" parent="grp_prof" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ced4da;" value="Сумарний час конвеєра:&#xa;T_total = 3.32 мс -&gt; 301 FPS&#xa;Inference становить лише 9.1% затримки" vertex="1">
+          <mxGeometry height="60" width="310" x="30" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node_bottleneck" parent="grp_prof" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontStyle=1;" value="ВУЗЬКЕ МІСЦЕ (Bottleneck):&#xa;Frame Acquisition &amp; Decode (67.4%)&#xa;Висновок: Подальша оптимізація мережі&#xa;не дасть приросту без апаратного декодування відео" vertex="1">
+          <mxGeometry height="85" width="310" x="30" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_pf_1" edge="1" parent="grp_prof" source="node_prof_time" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_bottleneck">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_p4_p5" edge="1" parent="grp_pipe" source="pipe_s4" target="pipe_s5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="grp_bench" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="5. Порівняльний бенчмарк та апаратний вибір" vertex="1">
+          <mxGeometry height="240" width="400" x="450" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="node_bench_res" parent="grp_bench" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;" value="Результати апаратного бенчмарку (CPU):&#xa;• PyTorch FP32: 1.16 мс | 1373 FPS | 4.10 MB&#xa;• ORT INT8: 0.19 мс | 5895 FPS | 0.35 MB&#xa;• OpenVINO INT8: 0.26 мс | 13062 FPS | 0.35 MB" vertex="1">
+          <mxGeometry height="75" width="340" x="30" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node_hw_diag" parent="grp_bench" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#f87171;" value="Діагностика прискорювачів:&#xa;• CPU: AMD Ryzen 5 (AVX-512/VNNI прискорення)&#xa;• GPU/iGPU: OpenVINO error -11 (потрібен Intel NEO)&#xa;• NPU: Відсутній у системі" vertex="1">
+          <mxGeometry height="75" width="340" x="30" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_pipe_to_prof" edge="1" parent="1" source="grp_pipe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="grp_prof">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Edge from INT8 model to inference stage -->
-        <mxCell id="edge_m_to_inf" edge="1" parent="1" source="node_int8_model" target="pipe_s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_pipe_to_bench" edge="1" parent="1" source="grp_pipe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="grp_bench">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Container 4: Profiling & Bottleneck Analysis -->
-        <mxCell id="grp_prof" value="4. Профілювання затримок та аналіз вузького місця" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="50" y="530" width="370" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="node_prof_time" value="Сумарний час конвеєра:&#xa;T_total = 3.32 мс -&gt; 301 FPS&#xa;Inference становить лише 9.1% затримки" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ced4da;" vertex="1" parent="grp_prof">
-          <mxGeometry x="30" y="40" width="310" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="node_bottleneck" value="ВУЗЬКЕ МІСЦЕ (Bottleneck):&#xa;Frame Acquisition &amp; Decode (67.4%)&#xa;Висновок: Подальша оптимізація мережі&#xa;не дасть приросту без апаратного декодування відео" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontStyle=1;" vertex="1" parent="grp_prof">
-          <mxGeometry x="30" y="125" width="310" height="85" as="geometry" />
-        </mxCell>
-        <mxCell id="edge_pf_1" edge="1" parent="grp_prof" source="node_prof_time" target="node_bottleneck" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Container 5: Benchmark & Hardware Trade-off -->
-        <mxCell id="grp_bench" value="5. Порівняльний бенчмарк та апаратний вибір" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="450" y="530" width="400" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="node_bench_res" value="Результати апаратного бенчмарку (CPU):&#xa;• PyTorch FP32: 1.16 мс | 1373 FPS | 4.10 MB&#xa;• ORT INT8: 0.19 мс | 5895 FPS | 0.35 MB&#xa;• OpenVINO INT8: 0.26 мс | 13062 FPS | 0.35 MB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;" vertex="1" parent="grp_bench">
-          <mxGeometry x="30" y="40" width="340" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="node_hw_diag" value="Діагностика прискорювачів:&#xa;• CPU: AMD Ryzen 5 (AVX-512/VNNI прискорення)&#xa;• GPU/iGPU: OpenVINO error -11 (потрібен Intel NEO)&#xa;• NPU: Відсутній у системі" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#f87171;" vertex="1" parent="grp_bench">
-          <mxGeometry x="30" y="135" width="340" height="75" as="geometry" />
-        </mxCell>
-
-        <!-- Edges to lower containers -->
-        <mxCell id="edge_pipe_to_prof" edge="1" parent="1" source="grp_pipe" target="grp_prof" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="edge_pipe_to_bench" edge="1" parent="1" source="grp_pipe" target="grp_bench" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
       </root>
     </mxGraphModel>
   </diagram>

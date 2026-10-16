@@ -1,113 +1,103 @@
 <mxfile host="Electron">
   <diagram name="ONNX-Deployment-Pipeline" id="deployment_pipeline_diagram">
-    <mxGraphModel dx="1200" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="566" dy="356" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <!-- Container 1: PyTorch Model Source -->
-        <mxCell id="grp_pt" value="1. Вихідне середовище навчання (PyTorch)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="60" y="40" width="360" height="230" as="geometry" />
+        <mxCell id="grp_pt" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="1. Вихідне середовище навчання (PyTorch)" vertex="1">
+          <mxGeometry height="230" width="360" x="60" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_ckpt" value="Чекпоінт навченої моделі:&#xa;models/best_cnn_model.pt&#xa;(SimpleCNN, 356k параметрів)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="grp_pt">
-          <mxGeometry x="40" y="40" width="280" height="60" as="geometry" />
+        <mxCell id="node_ckpt" parent="grp_pt" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" value="Чекпоінт навченої моделі:&#xa;models/best_cnn_model.pt&#xa;(SimpleCNN, 356k параметрів)" vertex="1">
+          <mxGeometry height="60" width="280" x="40" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_eval" value="Ініціалізація моделі в eval() режимі&#xa;та генерація Dummy Tensor:&#xa;shape=(1, 3, 64, 64), float32" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ced4da;" vertex="1" parent="grp_pt">
-          <mxGeometry x="40" y="135" width="280" height="60" as="geometry" />
+        <mxCell id="node_eval" parent="grp_pt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ced4da;" value="Ініціалізація моделі в eval() режимі&#xa;та генерація Dummy Tensor:&#xa;shape=(1, 3, 64, 64), float32" vertex="1">
+          <mxGeometry height="60" width="280" x="40" y="135" as="geometry" />
         </mxCell>
-        <mxCell id="edge_pt_1" edge="1" parent="grp_pt" source="node_ckpt" target="node_eval" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_pt_1" edge="1" parent="grp_pt" source="node_ckpt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_eval">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Container 2: ONNX Export & Intermediate Representation -->
-        <mxCell id="grp_exp" value="2. Експорт та обчислювальний граф ONNX" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="470" y="40" width="410" height="230" as="geometry" />
+        <mxCell id="grp_exp" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="2. Експорт та обчислювальний граф ONNX" vertex="1">
+          <mxGeometry height="230" width="410" x="470" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_export" value="torch.onnx.export(...):&#xa;opset_version=14, dynamic_axes={batch_size}&#xa;Трасування обчислювального графа" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="grp_exp">
-          <mxGeometry x="40" y="40" width="330" height="60" as="geometry" />
+        <mxCell id="node_export" parent="grp_exp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="torch.onnx.export(...):&#xa;opset_version=14, dynamic_axes={batch_size}&#xa;Трасування обчислювального графа" vertex="1">
+          <mxGeometry height="60" width="330" x="40" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_onnx_file" value="Проміжне представлення (IR):&#xa;models/simple_cnn.onnx (1.37 МБ)&#xa;Граф операцій: Conv, Relu, MaxPool, Gemm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="grp_exp">
-          <mxGeometry x="40" y="135" width="330" height="60" as="geometry" />
+        <mxCell id="node_onnx_file" parent="grp_exp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="Проміжне представлення (IR):&#xa;models/simple_cnn.onnx (1.37 МБ)&#xa;Граф операцій: Conv, Relu, MaxPool, Gemm" vertex="1">
+          <mxGeometry height="60" width="330" x="40" y="135" as="geometry" />
         </mxCell>
-        <mxCell id="edge_ex_1" edge="1" parent="grp_exp" source="node_export" target="node_onnx_file" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_ex_1" edge="1" parent="grp_exp" source="node_export" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_onnx_file">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Container 3: Validation & Numerical Check -->
-        <mxCell id="grp_val" value="3. Верифікація та перевірка еквівалентності" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="60" y="310" width="360" height="270" as="geometry" />
+        <mxCell id="grp_val" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="3. Верифікація та перевірка еквівалентності" vertex="1">
+          <mxGeometry height="270" width="360" x="60" y="310" as="geometry" />
         </mxCell>
-        <mxCell id="node_checker" value="Валідація графа ONNX:&#xa;onnx.checker.check_model()&#xa;Інспекція типів та форм входів/виходів" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="grp_val">
-          <mxGeometry x="35" y="40" width="290" height="60" as="geometry" />
+        <mxCell id="node_checker" parent="grp_val" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Валідація графа ONNX:&#xa;onnx.checker.check_model()&#xa;Інспекція типів та форм входів/виходів" vertex="1">
+          <mxGeometry height="60" width="290" x="35" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_num_check" value="Чисельне порівняння тензорів:&#xa;|PyTorch_out - ORT_out| &lt; 1e-6&#xa;Максимальна похибка: 2.38e-07&#xa;Співпадіння прогнозів: 100%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="grp_val">
-          <mxGeometry x="35" y="140" width="290" height="80" as="geometry" />
+        <mxCell id="node_num_check" parent="grp_val" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" value="Чисельне порівняння тензорів:&#xa;|PyTorch_out - ORT_out| &lt; 1e-6&#xa;Максимальна похибка: 2.38e-07&#xa;Співпадіння прогнозів: 100%" vertex="1">
+          <mxGeometry height="80" width="290" x="35" y="140" as="geometry" />
         </mxCell>
-        <mxCell id="edge_vl_1" edge="1" parent="grp_val" source="node_checker" target="node_num_check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_vl_1" edge="1" parent="grp_val" source="node_checker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_num_check">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Container 4: Runtime Deployments -->
-        <mxCell id="grp_rt" value="4. Середовища розгортання (Runtimes)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="470" y="310" width="410" height="270" as="geometry" />
+        <mxCell id="grp_rt" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="4. Середовища розгортання (Runtimes)" vertex="1">
+          <mxGeometry height="270" width="410" x="470" y="310" as="geometry" />
         </mxCell>
-        <mxCell id="node_ort" value="ONNX Runtime Engine:&#xa;InferenceSession (CPUExecutionProvider)&#xa;Злиття операторів, Latency: 0.29 мс, FPS: 3393" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="grp_rt">
-          <mxGeometry x="40" y="45" width="330" height="65" as="geometry" />
+        <mxCell id="node_ort" parent="grp_rt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="ONNX Runtime Engine:&#xa;InferenceSession (CPUExecutionProvider)&#xa;Злиття операторів, Latency: 0.29 мс, FPS: 3393" vertex="1">
+          <mxGeometry height="65" width="330" x="40" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="node_ov" value="Intel OpenVINO Runtime:&#xa;core.compile_model(model, 'CPU')&#xa;AVX2 векторизація, Throughput: 8499 img/s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="grp_rt">
-          <mxGeometry x="40" y="150" width="330" height="65" as="geometry" />
+        <mxCell id="node_ov" parent="grp_rt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Intel OpenVINO Runtime:&#xa;core.compile_model(model, &#39;CPU&#39;)&#xa;AVX2 векторизація, Throughput: 8499 img/s" vertex="1">
+          <mxGeometry height="65" width="330" x="40" y="150" as="geometry" />
         </mxCell>
-
-        <!-- Container 5: Production Serving -->
-        <mxCell id="grp_prod" value="5. Автономне промислове використання (Standalone Serving)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="60" y="620" width="820" height="170" as="geometry" />
+        <mxCell id="grp_prod" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#495057;fontStyle=1;fontSize=13;" value="5. Автономне промислове використання (Standalone Serving)" vertex="1">
+          <mxGeometry height="170" width="820" x="60" y="620" as="geometry" />
         </mxCell>
-        <mxCell id="node_serving" value="Автономний інференс (onnx_inference.py, openvino_inference.py):&#xa;• Відсутність залежностей від PyTorch (економія пам'яті та дискового простору)&#xa;• Передобробка OpenCV + NumPy (Resize 64x64, BGR-&gt;RGB, ImageNet нормалізація)&#xa;• Виконання прямого проходу моделі та розрахунок Softmax" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="grp_prod">
-          <mxGeometry x="40" y="40" width="530" height="90" as="geometry" />
+        <mxCell id="node_serving" parent="grp_prod" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Автономний інференс (onnx_inference.py, openvino_inference.py):&#xa;• Відсутність залежностей від PyTorch (економія пам&#39;яті та дискового простору)&#xa;• Передобробка OpenCV + NumPy (Resize 64x64, BGR-&gt;RGB, ImageNet нормалізація)&#xa;• Виконання прямого проходу моделі та розрахунок Softmax" vertex="1">
+          <mxGeometry height="90" width="530" x="40" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="node_output" value="Кінцевий результат:&#xa;Клас, впевненість,&#xa;телеметрія Latency/FPS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="grp_prod">
-          <mxGeometry x="610" y="45" width="170" height="80" as="geometry" />
+        <mxCell id="node_output" parent="grp_prod" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" value="Кінцевий результат:&#xa;Клас, впевненість,&#xa;телеметрія Latency/FPS" vertex="1">
+          <mxGeometry height="80" width="170" x="610" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="edge_pr_1" edge="1" parent="grp_prod" source="node_serving" target="node_output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="edge_pr_1" edge="1" parent="grp_prod" source="node_serving" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_output">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Inter-group Connections -->
-        <mxCell id="edge_c1" edge="1" parent="1" source="node_eval" target="node_export" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="edge_c1" edge="1" parent="1" source="node_eval" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="node_export">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="205" />
+              <mxPoint x="440" y="110" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="edge_lbl_c1" connectable="0" parent="edge_c1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Dummy Input" vertex="1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-33" as="offset" />
+          </mxGeometry>
         </mxCell>
-
-        <mxCell id="edge_c2" edge="1" parent="1" source="node_onnx_file" target="node_checker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+        <mxCell id="edge_c2" edge="1" parent="1" source="node_onnx_file" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="node_checker">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge_lbl_c2" connectable="0" parent="edge_c2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="ONNX граф" vertex="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="edge_c3" edge="1" parent="1" source="node_num_check" target="node_ort" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.5;">
+        <mxCell id="edge_c3" edge="1" parent="1" source="node_num_check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" target="node_ort">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge_lbl_c3" connectable="0" parent="edge_c3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Валідований граф" vertex="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="edge_c4" edge="1" parent="1" source="node_num_check" target="node_ov" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;entryX=0;entryY=0.5;">
+        <mxCell id="edge_c4" edge="1" parent="1" source="node_num_check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;entryX=0;entryY=0.5;" target="node_ov">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge_lbl_c4" connectable="0" parent="edge_c4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Компіляція CPU" vertex="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="edge_c5" edge="1" parent="1" source="node_ov" target="node_serving" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.7;entryY=0;">
+        <mxCell id="edge_c5" edge="1" parent="1" source="node_ov" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.7;entryY=0;" target="node_serving">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge_lbl_c5" connectable="0" parent="edge_c5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Розгортання у production" vertex="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
       </root>
     </mxGraphModel>
   </diagram>
